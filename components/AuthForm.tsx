@@ -1,9 +1,16 @@
 import Link from "next/link";
 import React, { useState } from 'react'
 import Image from "next/image";
+import { z } from "zod"
 
 const AuthForm = ({ type }: { type: string }) => {
-    
+
+
+
+const formSchema = z.object({
+    username: z.string().min(2).max(50),
+    })
+
 const [user, setUser] = useState(null);
 
   return (
@@ -38,6 +45,15 @@ const [user, setUser] = useState(null);
                 </h1>
             </div>
         </header>
+        {user ? (
+            <div className="flex flex-col gap-4">
+                {/* PlaidLink */}
+            </div>
+        ): (
+            <>
+                FORM
+            </>
+        ) }
     </section>
   )
 }
